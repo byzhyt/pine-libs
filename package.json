@@ -7,9 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "lint": "eslint --cache .",
-    "format": "prettier --write --cache .",
-    "postinstall": "simple-git-hooks"
+    "lint": "eslint --fix \"./src/**/*.{js,jsx,ts,tsx}\""
   },
   "dependencies": {
     "@babel/core": "^7.23.9",
@@ -18,7 +16,6 @@
     "@commitlint/config-conventional": "^19.2.2",
     "@element-plus/icons-vue": "^2.3.1",
     "@types/node": "^20.14.2",
-    "@vitejs/plugin-legacy": "^5.4.1",
     "@vitejs/plugin-vue-jsx": "^4.0.0",
     "axios": "^1.6.8",
     "crypto-js": "^4.2.0",
@@ -28,8 +25,10 @@
     "eslint": "^9.4.0",
     "eslint-plugin-vue": "^9.26.0",
     "husky": "^9.0.11",
+    "lint-staged": "^15.2.7",
     "pine-utils": "workspace:^",
     "pinia-plugin-store": "^2.2.1",
+    "prettier": "^3.3.2",
     "qrcode": "^1.5.3",
     "rollup-plugin-visualizer": "^5.12.0",
     "sass": "^1.75.0",
@@ -51,16 +50,13 @@
     "vue-tsc": "^2.0.13"
   },
   "simple-git-hooks": {
-    "pre-commit": "pnpm lint-staged && pnpm check",
-    "commit-msg": "node scripts/verify-commit.js"
+    "pre-commit": "pnpm lint-staged",
+    "pre-push": "npm run format"
   },
   "lint-staged": {
-    "*.{js,json}": [
-      "prettier --write"
-    ],
-    "*.ts?(x)": [
-      "eslint --fix",
-      "prettier --parser=typescript --write"
+    "*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --write --cache --config .prettierrc",
+      "git add"
     ]
   }
 }

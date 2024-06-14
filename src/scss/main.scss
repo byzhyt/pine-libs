@@ -59,7 +59,9 @@ html {
 .el-input__inner:-webkit-autofill:focus,
 .el-input__inner:-webkit-autofill:active {
   -webkit-transition-delay: 99999s;
-  -webkit-transition: color 99999s ease-out, background-color 99999s ease-out;
+  -webkit-transition:
+    color 99999s ease-out,
+    background-color 99999s ease-out;
 }
 
 .m-b-0px {
@@ -79,7 +81,6 @@ html {
     background-color: var(--el-color-primary);
   }
 }
-
 
 .border-bottom {
   border-bottom: 1px solid var(--el-border-color);

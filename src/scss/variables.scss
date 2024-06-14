@@ -25,25 +25,18 @@
   --el-text-color-disabled: #c0c4cc;
 }
 
-
 /* 边框颜色 */
 /* 透明度 */
 $color-opacity: 0.3; // 组件禁用态的透明度
 
 // css3添加前缀
 @mixin addfix($t, $name, $value) {
-  $arrfix: '-webkit-',
-  '-ms-',
-  '-moz-',
-  '-o-',
-  '';
+  $arrfix: '-webkit-', '-ms-', '-moz-', '-o-', '';
 
   @each $type in $arrfix {
     @if ($t==1) {
       #{$name}: #{$type}#{$value};
-    }
-
-    @else {
+    } @else {
       #{$type}#{$name}: #{$value};
     }
   }
@@ -51,7 +44,8 @@ $color-opacity: 0.3; // 组件禁用态的透明度
 
 // 设置元素2D和3D转换
 @mixin transform($type, $value) {
-  $types: ('none': 'none',
+  $types: (
+    'none': 'none',
     // 定义 2D 转换，使用六个值的矩阵。
     'matrix': 'matrix(#{$value})',
     // 定义 3D 转换，使用 16 个值的 4x4 矩阵。
@@ -93,14 +87,15 @@ $color-opacity: 0.3; // 组件禁用态的透明度
     // 定义沿着 Y 轴的 2D 倾斜转换。
     'skewY': 'skewY(#{$value})',
     // 为 3D 转换元素定义透视视图。
-    'perspective': 'perspective(#{$value})'
+    'perspective': 'perspective(#{$value})',
   );
   @include addfix(0, 'transform', getmap($types, $type));
 }
 
 // 设置所有子元素在2D或3D平面呈现方式
 @mixin transform-style($value) {
-  $types: ( // 2D平面
+  $types: (
+    // 2D平面
     'flat': 'flat',
     // 3D平面
     '3d': 'preserve-3d'
@@ -115,11 +110,9 @@ $color-opacity: 0.3; // 组件禁用态的透明度
 
 // 设置元素渐变
 @mixin bgramp($type, $value) {
-  @if (#{$type}=='line') {
+  @if (#{$type}== 'line') {
     @include addfix(1, 'background-image', 'linear-gradient(#{$value})');
-  }
-
-  @else {
+  } @else {
     @include addfix(1, 'background-image', 'radial-gradient(#{$value})');
   }
 }
@@ -127,11 +120,9 @@ $color-opacity: 0.3; // 组件禁用态的透明度
 @mixin bdramp($type, $value) {
   border-image-slice: 1;
 
-  @if (#{$type}=='line') {
+  @if (#{$type}== 'line') {
     @include addfix(1, 'border-image', 'linear-gradient(#{$value})');
-  }
-
-  @else {
+  } @else {
     @include addfix(1, 'border-image', 'radial-gradient(#{$value})');
   }
 }
@@ -144,19 +135,18 @@ $color-opacity: 0.3; // 组件禁用态的透明度
 }
 
 // 设置背景图片
-@mixin background($value,
-  $size: 'cover',
-  $origin: 'border-box',
-  $clip: 'border-box'
-
-) {
+@mixin background($value, $size: 'cover', $origin: 'border-box', $clip: 'border-box') {
   background: #{$value}; // $size背景图大小    可选值cover,contain,px|%
-  @include addfix(0,
+  @include addfix(
+    0,
     'background-size',
-    #{$size}); // $origin 设置背景图片起始位置  可选值:padding-box,boder-box,content-box
-  @include addfix(0,
+    #{$size}
+  ); // $origin 设置背景图片起始位置  可选值:padding-box,boder-box,content-box
+  @include addfix(
+    0,
     'background-origin',
-    #{orugin}); // $clip设置背景绘制区域    可选值:padding-box,boder-box,content-box,text
+    #{orugin}
+  ); // $clip设置背景绘制区域    可选值:padding-box,boder-box,content-box,text
   @include addfix(0, 'background-clip', #{$clip});
 }
 
@@ -167,11 +157,9 @@ $color-opacity: 0.3; // 组件禁用态的透明度
 
 // 设置元素阴影
 @mixin shadow($type, $value) {
-  @if ($type=='in') {
+  @if ($type== 'in') {
     @include addfix(0, 'box-shadow', 'inset #{$value}');
-  }
-
-  @else {
+  } @else {
     @include addfix(0, 'box-shadow', #{$value});
   }
 }
@@ -187,7 +175,8 @@ $color-opacity: 0.3; // 组件禁用态的透明度
 
 // 设置图片外观
 @mixin filter($type, $value) {
-  $types: ( // 无SVG滤镜效果。
+  $types: (
+    // 无SVG滤镜效果。
     'none': 'none',
     // 设置对象的模糊效果
     'blur': 'blur(#{$value})',
@@ -217,11 +206,8 @@ $color-opacity: 0.3; // 组件禁用态的透明度
 
 // css3动画
 @mixin keyframes($el, $name, $style: 1s linear infinite) {
-  $arrfix: '@-webkit-keyframes ',
-  '@-ms-keyframes ',
-  '@-moz-keyframes ',
-  '@-o-keyframes ',
-  '@keyframes ';
+  $arrfix: '@-webkit-keyframes ', '@-ms-keyframes ', '@-moz-keyframes ', '@-o-keyframes ',
+    '@keyframes ';
 
   #{$el} {
     @include addfix(0, 'animation', #{$name} #{$style});

@@ -1,12 +1,12 @@
 export const useConfig: any = defineStore({
-  id: "config",
+  id: 'config',
   state() {
     return {
-      appVersion: "pc" as string,
+      appVersion: 'pc' as string,
       theme: {
-        status: "Sunny"
+        status: 'Sunny',
       },
-      loading: true
+      loading: true,
     };
   },
   getters: {
@@ -18,7 +18,7 @@ export const useConfig: any = defineStore({
     },
     getAppVersion(state) {
       return state.appVersion;
-    }
+    },
   },
   actions: {
     setPageLoad(data: any) {
@@ -29,59 +29,59 @@ export const useConfig: any = defineStore({
     },
     setAppVersion(data: string) {
       this.appVersion = data;
-    }
-  }
+    },
+  },
 });
 
 export const useToken: any = defineStore({
-  id: "token",
+  id: 'token',
   state() {
     return {
-      token: "" as string
+      token: '' as string,
     };
   },
   getters: {
     getToken(state: any) {
       return state.token;
-    }
+    },
   },
   actions: {
-    setToken(data: string = "") {
+    setToken(data: string = '') {
       this.token = data;
-    }
-  }
+    },
+  },
 });
 
 export const useUserInfo: any = defineStore({
-  id: "userInfo",
+  id: 'userInfo',
   state() {
     return {
-      userInfo: {} as object
+      userInfo: {} as object,
     };
   },
   getters: {
     getUserInfo(state) {
       return state.userInfo;
-    }
+    },
   },
   actions: {
     setUserInfo(datas: Object = {}) {
       this.userInfo = datas;
-    }
-  }
+    },
+  },
 });
 
 export const useDictList: any = defineStore({
-  id: "dictList",
+  id: 'dictList',
   state() {
     return {
-      dictjson: {} as any
+      dictjson: {} as any,
     };
   },
   getters: {
     getDictList(state) {
       return (type: string) => state.dictjson[type];
-    }
+    },
   },
   actions: {
     setDictList(res: any) {
@@ -90,27 +90,27 @@ export const useDictList: any = defineStore({
       } else {
         this.dictjson = res;
       }
-    }
-  }
+    },
+  },
 });
 // 详情
 export const useDetails: any = defineStore({
-  id: "details",
+  id: 'details',
   state() {
     return {
-      detalis: {} as any
+      detalis: {} as any,
     };
   },
   getters: {
     getDetails(state) {
       return state.detalis;
-    }
+    },
   },
   actions: {
     setDetails(data: any) {
       this.detalis = data;
-    }
-  }
+    },
+  },
 });
 // 用户信息
 export const setUserInfo = (data: any) => useUserInfo().setUserInfo(data);
@@ -135,7 +135,7 @@ export const setPageLoad = (data: any) => useConfig().setPageLoad(data);
 export const getPageLoad = () => useConfig().getPageLoad;
 export const resetPinia = () => {
   setUserInfo({});
-  setToken("");
+  setToken('');
   setAppTheme({});
   setDictList({});
   setDetails({});
