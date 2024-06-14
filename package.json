@@ -13,21 +13,17 @@
   "dependencies": {
     "@babel/core": "^7.23.9",
     "@babel/eslint-parser": "^7.24.7",
-    "@commitlint/cli": "^19.3.0",
-    "@commitlint/config-conventional": "^19.2.2",
     "@element-plus/icons-vue": "^2.3.1",
     "@types/node": "^20.14.2",
     "@vitejs/plugin-vue-jsx": "^4.0.0",
     "axios": "^1.6.8",
-    "commitizen": "^4.3.0",
     "crypto-js": "^4.2.0",
+    "cz-git": "^1.9.3",
     "dart-sass": "^1.25.0",
     "dayjs": "^1.11.10",
     "element-plus": "^2.7.1",
     "eslint": "^9.4.0",
     "eslint-plugin-vue": "^9.26.0",
-    "husky": "^9.0.11",
-    "lint-staged": "^15.2.7",
     "pine-utils": "workspace:^",
     "pinia-plugin-store": "^2.2.1",
     "prettier": "^3.3.2",
@@ -50,20 +46,5 @@
     "typescript": "^5.4.5",
     "vite": "^5.2.10",
     "vue-tsc": "^2.0.13"
-  },
-  "config": {
-    "commitizen": {
-      "path": "node_modules/cz-git"
-    }
-  },
-  "simple-git-hooks": {
-    "pre-commit": "pnpm lint-staged",
-    "pre-push": "npm run format"
-  },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx,json,css,scss,md}": [
-      "prettier --write",
-      "git add"
-    ]
   }
 }
